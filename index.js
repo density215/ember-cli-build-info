@@ -1,8 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var execSync = require('exec-sync'),
-    xml2js = require('xml2js').parseString;
+var execSync = require('exec-sync')
 
 module.exports = {
     name: 'ember-cli-build-info',
