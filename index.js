@@ -49,7 +49,7 @@ module.exports = {
             }
         }
 
-        if (this.options.vcsFlavor === 'svn') {
+        else {
             var svn = execSync('svn info') || null,
                 descObj = {};
             svn.split('\n').forEach(function (l) {
