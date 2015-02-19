@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var execSync = require('exec-sync');
+var execSync = require('exec-sync')
 
 module.exports = {
     name: 'ember-cli-build-info',
@@ -49,15 +49,16 @@ module.exports = {
             }
         }
 
-        else {
+        else if (this.options.vcsFlavor === 'svn') {
             var svn = execSync('svn info') || null,
                 descObj = {};
             svn.split('\n').forEach(function (l) {
                 var kv = l.split(': ');
                 descObj[kv[0]] = kv[1];
             });
-            info.desc = 'rev-' + descObj.Revision;
-            info.commit = descObj['Repository UUID'];
+            info.desc = '-rev' + descObj.Revision;
+            info.author = descObj['Last Changed Author'];
+            info.date = descObj['Last Changed Date'];
         }
         // store the info
         this.info = info;
@@ -89,7 +90,9 @@ module.exports = {
             output = options.metaTemplate
                 .replace(/\{VERSION\}/g, info.version)
                 .replace(/\{DESC\}/g, info.desc)
-                .replace(/\{COMMIT\}/g, info.commit);
+                .replace(/\{COMMIT\}/g, info.commit)
+                .replace(/\{AUTHOR}/g, info.author)
+                .replace(/\{DATE}/g, info.date);
 
             return '<meta name="build-info" content="' + output + '"/>';
         }

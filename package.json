@@ -1,6 +1,6 @@
 {
-  "name": "ember-cli-svn-info",
-  "version": "0.0.4",
+  "name": "ember-cli-build-info",
+  "version": "0.0.5",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -17,7 +17,10 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "Eli Dupuis <elidupuis@gmail.com>",
+  "author": {
+    "name": "Eli Dupuis",
+    "email": "elidupuis@gmail.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
@@ -34,7 +37,8 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^4.0.5",
+    "xml2js": "^0.4.5"
   },
   "dependencies": {
     "exec-sync": "^0.1.6"
@@ -49,5 +53,15 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "readme": "# ember-cli-build-info\n\n> Inject build info into your routes, controllers, and services.\n\n*Note: this addon currently assumes you are using git for version control.*\n\nInformation includes:\n\n```js\nbuildInfo: {\n  version: '0.1.4', // pulled from package.json\n  desc: 'v0.1.4-3-g53df212', // from shell command `git describe`\n  commit: '53df212', // from `desc` above\n}\n```\n\nIn order to retrieve the git information, this addon runs a syncronous shell command using [exec-sync](https://www.npmjs.com/package/exec-sync).\n\n## Installation\n\n```bash\nnpm install --save-dev ember-cli-build-info\n```\n\n## Usage \nThe data is injected into routes, controllers, and services using the `buildInfo` key.\n\nIn a template:\n```html\n<p>Version: {{buildInfo.version}}</p>\n<p>SHA: {{buildInfo.commit}}</p>\n```\n\nIn a route, controller, or service:\n```js\nvar buildInfo = this.buildInfo;\n```\n\n## Configuration Options\nThere is currently only 1 configurable option. Customize using the `buildInfoOptions` hash in your Brocfile:\n\n```js\nvar app = new EmberApp({\n  buildInfoOptions: {\n    metaTemplate: 'version={VERSION}'\n  }\n});\n```\n\n### `metaTemplate`\nAllows you to inject a meta tag containing the build info. Defaults to `false`.\n\nAvailable template keys include `{VERSION}`, `{DESC}`, and `{COMMIT}`. These keys will be replaced by the current build info values.\n\nThe example above would yeild:\n```html\n<meta name=\"build-info\" content=\"version:0.0.2\"/>\n```\n\n\n# Collaborating\n\nThis README outlines the details of collaborating on this Ember addon.\n\n* `git clone` this repository\n* `npm install`\n* `bower install`\n\n## Running\n\n* `ember server`\n* Visit your app at http://localhost:4200.\n\n## Running Tests\n\n* `ember test`\n* `ember test --server`\n\n## Building\n\n* `ember build`\n\nFor more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/elidupuis/ember-cli-build-info/issues"
+  },
+  "homepage": "https://github.com/elidupuis/ember-cli-build-info",
+  "_id": "ember-cli-build-info@0.0.4",
+  "_shasum": "26474d35d3a6adeb3b3998a612ca6547e400d24c",
+  "_resolved": "git+https://github.com/density215/ember-cli-build-info.git#0f9e54fd0d9b5cd2894654c5943a13aac5a3b665",
+  "_from": "git+https://github.com/density215/ember-cli-build-info.git"
 }
