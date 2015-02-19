@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-build-info",
+  "name": "ember-cli-svn-info",
   "version": "0.0.4",
   "directories": {
     "doc": "doc",
@@ -34,8 +34,7 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
-    "glob": "^4.0.5",
-    "xml2js": "^0.4.5"
+    "glob": "^4.0.5"
   },
   "dependencies": {
     "exec-sync": "^0.1.6"
