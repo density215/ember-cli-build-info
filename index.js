@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var execSync = require('exec-sync')
+var execSync = require('exec-sync');
 
 module.exports = {
     name: 'ember-cli-build-info',
@@ -16,7 +16,8 @@ module.exports = {
 
         var defaultOptions = {
             metaTemplate: false, // 'VERSION: {VERSION} SHA: {COMMIT}',
-            injectedKey: 'buildInfo'
+            injectedKey: 'buildInfo',
+            vcsFlavor: 'svn'
         };
 
         this.options = target.options.buildInfoOptions || {};
@@ -49,7 +50,7 @@ module.exports = {
         }
 
         if (this.options.vcsFlavor === 'svn') {
-            var svn = execSync('svn info ' + this.options.svnURL) || null,
+            var svn = execSync('svn info') || null,
                 descObj = {};
             svn.split('\n').forEach(function (l) {
                 var kv = l.split(': ');
