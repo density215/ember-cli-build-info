@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var execSync = require('exec-sync')
+var execSync = require('child_process').execSync;
 
 module.exports = {
     name: 'ember-cli-build-info',

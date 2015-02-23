@@ -40,9 +40,7 @@
     "glob": "^4.0.5",
     "xml2js": "^0.4.5"
   },
-  "dependencies": {
-    "exec-sync": "^0.1.6"
-  },
+  "dependencies": {},
   "description": "Inject build information (version, current SHA) into your Ember app.",
   "keywords": [
     "ember-addon",
