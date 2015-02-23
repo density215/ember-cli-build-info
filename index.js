@@ -50,7 +50,7 @@ module.exports = {
         }
 
         else if (this.options.vcsFlavor === 'svn') {
-            var svn = execSync('svn info') || null,
+            var svn = execSync('svn info', {encoding: 'utf8'}) || null,
                 descObj = {};
             svn.split('\n').forEach(function (l) {
                 var kv = l.split(': ');
